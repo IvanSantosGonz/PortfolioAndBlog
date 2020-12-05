@@ -7,8 +7,8 @@
 module.exports = {
   siteName: 'Ivan Santos',
   siteDescription: 'Ivan Santos Portfolio and Blog',
-  siteUrl: 'https://ivansantosgonz.github.io',
-  pathPrefix: '/PortfolioAndBlog',
+  siteUrl: 'https://ivansantosgonzalez.dev',
+  pathPrefix: '',
   plugins: [
     {
       use: 'gridsome-plugin-tailwindcss',
@@ -44,13 +44,13 @@ module.exports = {
         contentTypeName: 'Post',
         feedOptions: {
           title: 'Ivan Santos ',
-          feed_url: 'https://ivansantosgonz.dev/rss.xml',
-          site_url: 'https://ivansantosgonz.dev/'
+          feed_url: 'https://www.ivansantosgonzalez.dev/rss.xml',
+          site_url: 'https://www.ivansantosgonzalez.dev/'
         },
         feedItemOptions: node => ({
           title: node.title,
           description: node.summary,
-          url: 'https://ivansantosgonz.dev' + node.path,
+          url: 'https://www.ivansantosgonzalez.dev' + node.path,
           author: 'Iván Santos',
           date: node.date
         }),
