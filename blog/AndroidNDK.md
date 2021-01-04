@@ -165,7 +165,7 @@ object en la activity desde la cual lo vamos a llamar y crear las cabeceras de l
 llamaremos desde aquí. La palabra reservada `external` hace referencia a que la función a la que vamos a llamar está
 escrita en un lenguaje diferente de Java/kotlin y en Java se declara con la palabra reservada `native`.
 
-```kotlin
+```java
 private external fun encryptFromJNI(message: String): ByteArray
 private external fun decryptFromJNI(message: ByteArray): String
 
@@ -190,7 +190,7 @@ El código completo de este ejemplo está disponible en el siguiente repositorio
 
 [https://github.com/IvanSantosGonz/CryptAndDecriptAndroidNDK](https://github.com/IvanSantosGonz/CryptAndDecriptAndroidNDK)
 
-```C
+```c
 JNIEXPORT jbyteArray JNICALL
 Java_com_samplendkapp_MainActivity_encryptFromJNI(JNIEnv *env, jobject this, jstring message) {
 
