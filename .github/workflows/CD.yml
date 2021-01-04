@@ -24,9 +24,10 @@ jobs:
         run: gridsome build
 
       - name: Deploy to GitHub Pages
-        uses: Cecilapp/GitHub-Pages-deploy@master
+        uses: Cecilapp/GitHub-Pages-deploy@v3
         env:
-          EMAIL: ivansantosgonz@gmail.com
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          EMAIL: ivansantosgonz@gmail.com
           BUILD_DIR: dist
           CNAME: ivansantosgonzalez.dev
