@@ -139,14 +139,14 @@ mejor.</p>
 object en la activity desde la cual lo vamos a llamar y crear las cabeceras de las funciones de nuestro código C que
 llamaremos desde aquí. La palabra reservada <code>external</code> hace referencia a que la función a la que vamos a llamar está
 escrita en un lenguaje diferente de Java/kotlin y en Java se declara con la palabra reservada <code>native</code>.</p>
-<code class="shiki" style="background: #2e3440; color: #d8dee9">private external fun encryptFromJNI(message: String): ByteArray
-private external fun decryptFromJNI(message: ByteArray): String
+<pre class="shiki" style="background-color: #292D3E"><code><span style="color: #C792EA">private</span><span style="color: #FFFFFF"> external fun encryptFromJNI</span><span style="color: #89DDFF">(</span><span style="color: #FFFFFF">message</span><span style="color: #89DDFF">:</span><span style="color: #FFFFFF"> </span><span style="color: #C792EA">String</span><span style="color: #89DDFF">)</span><span style="color: #89DDFF">:</span><span style="color: #FFFFFF"> </span><span style="color: #C792EA">ByteArray</span>
+<span style="color: #C792EA">private</span><span style="color: #FFFFFF"> external fun decryptFromJNI</span><span style="color: #89DDFF">(</span><span style="color: #FFFFFF">message</span><span style="color: #89DDFF">:</span><span style="color: #FFFFFF"> </span><span style="color: #C792EA">ByteArray</span><span style="color: #89DDFF">)</span><span style="color: #89DDFF">:</span><span style="color: #FFFFFF"> </span><span style="color: #C792EA">String</span>
 
-companion object {
-        init {
-            System.loadLibrary(&quot;native-lib&quot;)
-        }
-    }</code>
+<span style="color: #FFFFFF">companion object </span><span style="color: #89DDFF">{</span>
+<span style="color: #FFFFFF">        init </span><span style="color: #89DDFF">{</span>
+<span style="color: #FFFFFF">            </span><span style="color: #C792EA">System.</span><span style="color: #FFFFFF">loadLibrary</span><span style="color: #89DDFF">(</span><span style="color: #89DDFF">"</span><span style="color: #C3E88D">native-lib</span><span style="color: #89DDFF">"</span><span style="color: #89DDFF">)</span>
+<span style="color: #FFFFFF">        </span><span style="color: #89DDFF">}</span>
+<span style="color: #FFFFFF">    </span><span style="color: #89DDFF">}</span></code></pre>
 <p>Finalmente, creamos en C nuestras funciones que envuelve a los métodos que vamos a llamar de nuestra librería en código
 nativo (<a href="https://github.com/IvanSantosGonz/CryptAndDecriptAndroidNDK/blob/master/app/src/main/cpp/crypto.c" target="_blank" rel="nofollow noopener noreferrer">crypto.c</a>),
 y que recibe y devuelve objetos con tipado del JNI, que son fácilmente identificables debido a que todos los tipos
@@ -157,41 +157,41 @@ fichero donde la cabecera es invocada, separando cada subdirectorio con guion ba
 devolver, así como seguido de la palabra reservada <code>JNICALL</code> como anotación a cada método.</p>
 <p>El código completo de este ejemplo está disponible en el siguiente repositorio de Github:</p>
 <p><a href="https://github.com/IvanSantosGonz/CryptAndDecriptAndroidNDK" target="_blank" rel="nofollow noopener noreferrer">https://github.com/IvanSantosGonz/CryptAndDecriptAndroidNDK</a></p>
-<code class="shiki" style="background: #2e3440; color: #d8dee9">JNIEXPORT jbyteArray JNICALL
-Java_com_samplendkapp_MainActivity_encryptFromJNI(JNIEnv *env, jobject this, jstring message) {
+<pre class="shiki" style="background-color: #292D3E"><code><span style="color: #FFFFFF">JNIEXPORT jbyteArray JNICALL</span>
+<span style="color: #82AAFF">Java_com_samplendkapp_MainActivity_encryptFromJNI</span><span style="color: #89DDFF">(</span><span style="color: #FFFFFF">JNIEnv </span><span style="color: #C792EA">*</span><span style="color: #FFFFFF">env, jobject this, jstring message</span><span style="color: #89DDFF">)</span><span style="color: #FFFFFF"> </span><span style="color: #89DDFF">{</span>
 
-    int ciphertext_len;
-    unsigned char ciphertext[128];
+<span style="color: #FFFFFF">    </span><span style="color: #C792EA">int</span><span style="color: #FFFFFF"> ciphertext_len;</span>
+<span style="color: #FFFFFF">    </span><span style="color: #C792EA">unsigned</span><span style="color: #FFFFFF"> </span><span style="color: #C792EA">char</span><span style="color: #FFFFFF"> ciphertext[</span><span style="color: #F78C6C">128</span><span style="color: #FFFFFF">];</span>
 
-    unsigned char *plaintext = (*env)-&gt;GetStringUTFChars(env, message, 0);
+<span style="color: #FFFFFF">    </span><span style="color: #C792EA">unsigned</span><span style="color: #FFFFFF"> </span><span style="color: #C792EA">char</span><span style="color: #FFFFFF"> </span><span style="color: #C792EA">*</span><span style="color: #FFFFFF">plaintext </span><span style="color: #C792EA">=</span><span style="color: #FFFFFF"> (</span><span style="color: #C792EA">*</span><span style="color: #FFFFFF">env)</span><span style="color: #C792EA">-&gt;</span><span style="color: #82AAFF">GetStringUTFChars</span><span style="color: #89DDFF">(</span><span style="color: #FFFFFF">env, message, </span><span style="color: #F78C6C">0</span><span style="color: #FFFFFF">);</span>
 
-    ciphertext_len = encrypt(plaintext, strlen((char *) plaintext), key, iv,
-                             ciphertext);
-    BIO_dump_fp(stdout, (const char *) ciphertext, ciphertext_len);
+<span style="color: #FFFFFF">    ciphertext_len </span><span style="color: #C792EA">=</span><span style="color: #89DDFF"> </span><span style="color: #82AAFF">encrypt</span><span style="color: #89DDFF">(</span><span style="color: #FFFFFF">plaintext,</span><span style="color: #89DDFF"> </span><span style="color: #82AAFF">strlen</span><span style="color: #FFFFFF">((</span><span style="color: #C792EA">char</span><span style="color: #FFFFFF"> </span><span style="color: #C792EA">*</span><span style="color: #FFFFFF">) plaintext), key, iv,</span>
+<span style="color: #FFFFFF">                             ciphertext);</span>
+<span style="color: #89DDFF">    </span><span style="color: #82AAFF">BIO_dump_fp</span><span style="color: #89DDFF">(</span><span style="color: #FFFFFF">stdout, (</span><span style="color: #C792EA">const</span><span style="color: #FFFFFF"> </span><span style="color: #C792EA">char</span><span style="color: #FFFFFF"> </span><span style="color: #C792EA">*</span><span style="color: #FFFFFF">) ciphertext, ciphertext_len);</span>
 
-    jbyteArray array = (*env)-&gt;NewByteArray(env, ciphertext_len);
-    (*env)-&gt;SetByteArrayRegion(env, array, 0, ciphertext_len, (jbyte *) (ciphertext));
-    return array;
-}
+<span style="color: #FFFFFF">    jbyteArray array </span><span style="color: #C792EA">=</span><span style="color: #FFFFFF"> (</span><span style="color: #C792EA">*</span><span style="color: #FFFFFF">env)</span><span style="color: #C792EA">-&gt;</span><span style="color: #82AAFF">NewByteArray</span><span style="color: #89DDFF">(</span><span style="color: #FFFFFF">env, ciphertext_len);</span>
+<span style="color: #FFFFFF">    (</span><span style="color: #C792EA">*</span><span style="color: #FFFFFF">env)</span><span style="color: #C792EA">-&gt;</span><span style="color: #82AAFF">SetByteArrayRegion</span><span style="color: #89DDFF">(</span><span style="color: #FFFFFF">env, array, </span><span style="color: #F78C6C">0</span><span style="color: #FFFFFF">, ciphertext_len, (jbyte </span><span style="color: #C792EA">*</span><span style="color: #FFFFFF">) (ciphertext));</span>
+<span style="color: #FFFFFF">    </span><span style="color: #89DDFF">return</span><span style="color: #FFFFFF"> array;</span>
+<span style="color: #89DDFF">}</span>
 
-JNIEXPORT jstring JNICALL
-Java_com_samplendkapp_MainActivity_decryptFromJNI(JNIEnv *env, jobject this, jbyteArray message) {
+<span style="color: #FFFFFF">JNIEXPORT jstring JNICALL</span>
+<span style="color: #82AAFF">Java_com_samplendkapp_MainActivity_decryptFromJNI</span><span style="color: #89DDFF">(</span><span style="color: #FFFFFF">JNIEnv </span><span style="color: #C792EA">*</span><span style="color: #FFFFFF">env, jobject this, jbyteArray message</span><span style="color: #89DDFF">)</span><span style="color: #FFFFFF"> </span><span style="color: #89DDFF">{</span>
 
-    int decryptedtext_len;
+<span style="color: #FFFFFF">    </span><span style="color: #C792EA">int</span><span style="color: #FFFFFF"> decryptedtext_len;</span>
 
-    unsigned char decryptedtext[128];
+<span style="color: #FFFFFF">    </span><span style="color: #C792EA">unsigned</span><span style="color: #FFFFFF"> </span><span style="color: #C792EA">char</span><span style="color: #FFFFFF"> decryptedtext[</span><span style="color: #F78C6C">128</span><span style="color: #FFFFFF">];</span>
 
-    int len = (*env)-&gt;GetArrayLength (env, message);
-    unsigned char encryptedText[len];
-    (*env)-&gt;GetByteArrayRegion (env, message, 0, len, (jbyte*) (encryptedText));
+<span style="color: #FFFFFF">    </span><span style="color: #C792EA">int</span><span style="color: #FFFFFF"> len </span><span style="color: #C792EA">=</span><span style="color: #FFFFFF"> (</span><span style="color: #C792EA">*</span><span style="color: #FFFFFF">env)</span><span style="color: #C792EA">-&gt;</span><span style="color: #82AAFF">GetArrayLength </span><span style="color: #89DDFF">(</span><span style="color: #FFFFFF">env, message);</span>
+<span style="color: #FFFFFF">    </span><span style="color: #C792EA">unsigned</span><span style="color: #FFFFFF"> </span><span style="color: #C792EA">char</span><span style="color: #FFFFFF"> encryptedText[len];</span>
+<span style="color: #FFFFFF">    (</span><span style="color: #C792EA">*</span><span style="color: #FFFFFF">env)</span><span style="color: #C792EA">-&gt;</span><span style="color: #82AAFF">GetByteArrayRegion </span><span style="color: #89DDFF">(</span><span style="color: #FFFFFF">env, message, </span><span style="color: #F78C6C">0</span><span style="color: #FFFFFF">, len, (jbyte</span><span style="color: #C792EA">*</span><span style="color: #FFFFFF">) (encryptedText));</span>
 
-    decryptedtext_len = decrypt(encryptedText, len, key, iv,
-                                decryptedtext);
+<span style="color: #FFFFFF">    decryptedtext_len </span><span style="color: #C792EA">=</span><span style="color: #89DDFF"> </span><span style="color: #82AAFF">decrypt</span><span style="color: #89DDFF">(</span><span style="color: #FFFFFF">encryptedText, len, key, iv,</span>
+<span style="color: #FFFFFF">                                decryptedtext);</span>
 
-    decryptedtext[decryptedtext_len] = &#039;\0&#039;;
+<span style="color: #FFFFFF">    decryptedtext[decryptedtext_len] </span><span style="color: #C792EA">=</span><span style="color: #FFFFFF"> </span><span style="color: #89DDFF">'\0'</span><span style="color: #FFFFFF">;</span>
 
-    return (*env)-&gt;NewStringUTF(env, decryptedtext);
-}</code>
+<span style="color: #FFFFFF">    </span><span style="color: #89DDFF">return</span><span style="color: #FFFFFF"> (</span><span style="color: #C792EA">*</span><span style="color: #FFFFFF">env)</span><span style="color: #C792EA">-&gt;</span><span style="color: #82AAFF">NewStringUTF</span><span style="color: #89DDFF">(</span><span style="color: #FFFFFF">env, decryptedtext);</span>
+<span style="color: #89DDFF">}</span></code></pre>
 <h2 id="huevo-de-pascua-🥚"><a href="#huevo-de-pascua-%F0%9F%A5%9A" aria-hidden="true"><span class="icon icon-link"></span></a>Huevo de Pascua 🥚🐰</h2>
 <p>Para no quedarnos con el click bait del título, hay que tener en cuenta que ciertas aplicaciones como son el caso de
 Instagram, tienen versiones diferentes de su aplicación en otras plataformas como Android, IOS o Web. En el caso
