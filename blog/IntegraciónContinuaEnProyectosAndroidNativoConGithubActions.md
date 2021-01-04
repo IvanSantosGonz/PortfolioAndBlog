@@ -1,7 +1,7 @@
 ---
 title: Integración Continua en Proyectos Android Nativo con Github Actions 
 path: /android-ci-github-actions 
-date:2020-12-04 
+date: 2020-12-04 
 summary: En este artículo montamos un sistema de integración continua para proyectos Android nativo utilizando Github Actions 
 tags: ['Continuous Integration', 'Github Actions', 'CI']
 ---
