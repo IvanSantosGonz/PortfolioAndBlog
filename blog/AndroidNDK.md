@@ -16,7 +16,7 @@ utilizando posteriormente el conjunto de herramientas del NDK de Android para ha
 esto es, por ejemplo, la siguiente oferta de trabajo publicada por Facebook donde buscan un/una Ingenier@ expert@ en el
 NDK de Android.
 
-![Oferta de trabajo para Android NDK de Facebook](images/AndroidNDK/JobOffer.png)
+![Oferta de trabajo para Android NDK de Facebook](./images/AndroidNDK/JobOffer.png)
 
 ## ¿Qué es y cómo funciona el NDK de Android? 📱
 
@@ -28,7 +28,7 @@ Java, pueda ejecutar código escrito en otros lenguajes como C, C++ o incluso en
 El NDK de Android nos permite a su vez manejar como se compilan nuestro código nativo utilizando NDK-build o CMake. El
 funcionamiento general del NDK en nuestra aplicación Android sigue el flujo siguiente:
 
-![Flujo de aplicación Android con código nativo C/C++](images/AndroidNDK/NDK_Android.png)
+![Flujo de aplicación Android con código nativo C/C++](./images/AndroidNDK/NDK_Android.png)
 
 Tenemos nuestro código Android donde en primer lugar debemos cargar la librería nativa que vamos a utilizar y la
 cabecera de los métodos nativos de la misma que utilizaremos. Mientras que por otro lado en nuestro código C/C++ debemos
@@ -43,7 +43,7 @@ combinación entre la arquitecturas de CPU y los conjuntos de instrucciones que 
 una de las plataformas para las que debemos compilar nuestra aplicación. A día de hoy, estas son las combinaciones,
 llamadas ABI (interfaz binaria de aplicación), disponibles en Android:
 
-![Conjunto de ABIS de Android](images/AndroidNDK/ABIs.png)
+![Conjunto de ABIS de Android](./images/AndroidNDK/ABIs.png)
 
 Finalmente, hay que tener en cuenta que el uso del NDK puede ser útil en cierto tipo de aplicaciones, mientras que en
 otras no sería necesario utilizarlo debido al aumento de la complejidad del proyecto sin obtener grandes beneficios por
@@ -71,19 +71,19 @@ su vida útil o cuyo equipo de desarrollo pueda mantener la misma.
 
 El primer paso consiste en crearnos un nuevo proyecto en Android Studio basado en el NDK.
 
-![Template de proyecto de Android Studio](images/AndroidNDK/AndroidStudio.png)
+![Template de proyecto de Android Studio](./images/AndroidNDK/AndroidStudio.png)
 
 Una vez que hayamos creado nuestro proyecto, dispondremos de nuestra aplicación Hello World utilizando el NDK. Podemos
 observar como en la estructura de nuestro proyecto tenemos un directorio `Java`y otro directorio `cpp` donde tendremos
 el código Java y el código nativo respectivamente.
 
-![Estructura de proyecto con NDK de Android](images/AndroidNDK/ProjectStructure.png)
+![Estructura de proyecto con NDK de Android](./images/AndroidNDK/ProjectStructure.png)
 
 En el ejemplo que vamos a ver a continuación vamos a desarrollar una aplicación que cifra y descifra mensajes de texto.
 
 Aquí podemos ver una captura de la interfaz de usuario de la aplicación:
 
-![Imagen de la aplicación de ejemplo desarrollada](images/AndroidNDK/Screenshot.png)
+![Imagen de la aplicación de ejemplo desarrollada](./images/AndroidNDK/Screenshot.png)
 
 Como podemos ver disponemos de dos botones `cifrar`y `descifrar`, que son los encargados de invocar a nuestras funciones
 responsables de dicho cometido. Dichas funciones, internamente harán uso de la librerías propias de `openssl` escritas
@@ -98,7 +98,7 @@ El primer paso para configurar nuestra aplicación consiste en importar nuestra 
 nuestro proyecto. Para ello además de tener los ficheros necesarios en nuestro proyecto, debemos enlazarlos dentro del
 fichero `CMakeLists.txt`.
 
-![Esctructura de las librerías a incluir en la app de ejemplo](images/AndroidNDK/Libraries.png)
+![Esctructura de las librerías a incluir en la app de ejemplo](./images/AndroidNDK/Libraries.png)
 
 Como podemos observar en la imagen, dentro del directorio `cpp` tenemos la librería `openssl` previamente compilada para
 cada una de las ABIs que vamos a soportar en el proyecto (que podrían o no ser todas las disponibles, o solo un
@@ -243,7 +243,7 @@ observar es el de Telegram al ser de dominio
 público, ([repositorio de Telegram](https://github.com/TelegramOrg/Telegram-Android/tree/master/TMessagesProj/jni))
 donde podemos observar la gran cantidad de librerías basadas en código nativo que utiliza.
 
-![Repositorio de Telegram con código nativo utilizado](images/AndroidNDK/Telegram.png)
+![Repositorio de Telegram con código nativo utilizado](./images/AndroidNDK/Telegram.png)
 
 ## Referencias 📚
 
