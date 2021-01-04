@@ -1,5 +1,5 @@
 ---
-title: 'Android NDK: Descubriendo por qué la app Android de Instagram está escrita en C/C++'
+title: 'Android NDK, Descubriendo por qué la app Android de Instagram está escrita en C/C++'
 path: /android-ndk date:
 2021-01-04 summary: ¿Qués es Android NDK? ¿Cómo lo utilizamos en nuestros proyectos?
 tags: ['Android', 'NDK', 'C', 'C++']
