@@ -58,6 +58,34 @@
     @apply border-white border-b;
 }
 
+.theme-coffee .search-highlighted {
+  background: #F1E7D0;
+}
+
+.theme-coffee .search-hover:hover {
+  background: #fff5df;
+}
+
+.theme-coffee {
+  --bg-background-primary: #F1E7D0;
+  --bg-background-secondary: #102c44;
+  --bg-background-tertiary: #1E3951;
+
+  --bg-background-form: #d9cfb7;
+
+  --text-copy-primary: #433422;
+  --text-copy-secondary: #664f3e;
+
+  --border-border-color-primary:  #433422;
+}
+
+.theme-coffee .markdown-body {
+  color: #433422;
+}
+
+.theme-coffee nav .active {
+  @apply border-black border-b;
+}
 .content-wrapper {
   transition: background-color .25s;
 }
