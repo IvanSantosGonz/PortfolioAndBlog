@@ -74,15 +74,6 @@ query Search {
       }
     }
   }
-  allDocumentation {
-    edges {
-      node {
-        id
-        path
-        title
-      }
-    }
-  }
 }
 </static-query>
 
@@ -102,13 +93,6 @@ export default {
           path: page.path,
           title: page.title,
           summary: page.summary
-        });
-      });
-      const allDocs = this.$static.allDocumentation.edges.map(edge => edge.node);
-      allDocs.forEach(page => {
-        result.push({
-          path: page.path,
-          title: page.title
         });
       });
       return result;
