@@ -6,7 +6,7 @@
         <div class="text-copy-secondary mb-4">
           <span>{{ post.node.date }}</span>
           <span> &middot; </span>
-          <span>{{ post.node.timeToRead }} min read</span>
+          <span>{{ post.node.timeToRead }} mins de lectura</span>
         </div>
 
         <div class="text-lg mb-4">
@@ -40,7 +40,7 @@ query Posts ($page: Int) {
       node {
         id
         title
-        date (format: "MMMM D, Y")
+        date (format: "D, MMMM, Y")
         summary
         timeToRead
         path
