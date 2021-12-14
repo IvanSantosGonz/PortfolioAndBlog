@@ -11,7 +11,7 @@ tags: ['Documentation', 'Template']
 
 Este artículo trata sobre que partes son, desde mi punto de vista, indispensables en la documentación de cualquier proyecto.
 
-Para mi, la documentación debe estar escrita en inglés en la mayoría de proyectos, ya que es el idioma más común a la hora de programar. Aunque si el equipo se siente más cómodo trabajando en español o cualquier otro idioma también puede ser escrita en el mismo.
+Para mí, la documentación debe estar escrita en inglés en la mayoría de proyectos, ya que es el idioma más común a la hora de programar. Aunque si el equipo se siente más cómodo trabajando en español o cualquier otro idioma también puede ser escrita en el mismo.
 
 Otro punto importante en cuando a la documentación de un proyecto es el como organizamos la misma. A mí me gusta encontrarme la documentación relacionada con un proyecto, al menos la indispensable, en el propio repositorio del proyecto. Muchas veces cuando tendemos a externalizar la documentación utilizando herramientas varias como Notion, Confluence, Google Drive, etc. la misma puede correr el riesgo de estar desperdigada en varios lugares. Para mi la fuente única de verdad en cuanto a documentación debe ser el propio repositorio.
 
@@ -63,7 +63,7 @@ Finalmente, podemos cerrar el documento Contributing con un enlace a la deuda t�
 
 Esta sección es importante para conocer la evolución del proyecto a lo largo del tiempo. Puede comenzar con una breve introducción sobre como utilizar este documento y sobre el sistema de versionado utilizado. Particularmente, me gusta basarme en el formato de documento de [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)  y en [Semantic Versioning](https://semver.org/spec/v2.0.0.html) en cuanto al versionado, pero el sistema utilizado para ambas cosas debe ser una decisión consensuada junto al equipo de trabajo.
 
-## **📝** LICENSE  ****
+## **📝** LICENSE
 
 El fichero de licencia suele ser el gran olvidado por parte de los desarrolladores. Es sobre todo muy importante en proyectos cuyo código fuente está accesible de manera pública independientemente de si el software que utiliza dicho código es software libre o no. Hay muchos tipos de licencia y la elección de la misma dependerá del tipo de proyecto en el que nos encontremos.
 
