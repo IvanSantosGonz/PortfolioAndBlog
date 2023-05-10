@@ -7,3 +7,5 @@
 1. `cd gridsome-portfolio-starter`
 1. `npm install` (This can be a long download because of Cypress. If you don't care about testing with Cypress, remove it from `package.json`)
 1. `gridsome develop` to start a local dev server at `http://localhost:8080`
+
+Project fails in node 18. Tested with node 16.
